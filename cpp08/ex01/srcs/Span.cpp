@@ -24,7 +24,20 @@ void Span::addNumber( int n ) {
         return ;
     }
     throw ListOverflowException();
+}
 
+void Span::addNumber( std::list<int>::iterator start, std::list<int>::iterator end ) {
+    for (std::list<int>::iterator tmp = start; tmp != end; tmp++) {
+        std::cout << (tmp == end ? "END" : "NOT END") << std::endl;
+        if (_lst.size() < _size) {
+            _lst.push_back(*tmp);
+            std::cout << *tmp << " added to the list" << std::endl;
+        }
+        else {
+            
+            throw ListOverflowException();
+        }
+    }
 }
 
 int Span::shortestSpan( void ) {
@@ -63,4 +76,8 @@ int Span::longestSpan( void ) {
         }
     }
     return (longest);
+}
+
+std::list<int> Span::getList( void ) const {
+    return (this->_lst);
 }

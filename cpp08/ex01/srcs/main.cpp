@@ -2,6 +2,7 @@
 
 int main() {
     Span test = Span(10000);
+    Span aaa = Span(10000);
 
     for (int i = 0; i < 9999; i++) {
         test.addNumber(i);
@@ -15,4 +16,8 @@ int main() {
 
     std::cout << test.shortestSpan() << std::endl;
     std::cout << test.longestSpan() << std::endl;
+
+    aaa.addNumber(test.getList().begin(), test.getList().end());
+    std::cout << aaa.shortestSpan() << std::endl;
+    std::cout << aaa.longestSpan() << std::endl;
 }

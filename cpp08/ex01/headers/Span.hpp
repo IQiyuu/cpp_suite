@@ -18,8 +18,11 @@ class Span {
         ~Span( void );
 
         void    addNumber( int );
+        void    addNumber( std::list<int>::iterator, std::list<int>::iterator );
         int     shortestSpan( void );
         int     longestSpan( void );
+
+        std::list<int> getList( void ) const;
 
     class ListOverflowException: public std::exception {
         public:
