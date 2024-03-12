@@ -1,11 +1,12 @@
-NAME = span
+NAME = btc
 
 F = main\
+	BitcoinExchange
 
 
 S = $(foreach f, $(F), srcs/$(f).cpp)
 OBJ = $(S:.cpp=.o)
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -Iheaders
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -Iheaders -fsanitize=address -g
 
 all: $(NAME)
 r: re
