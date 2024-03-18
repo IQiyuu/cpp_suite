@@ -23,21 +23,13 @@ void Span::addNumber( int n ) {
         std::cout << n << " added to the list" << std::endl;
         return ;
     }
-    throw ListOverflowException();
+    throw std::out_of_range("Span::addNumber: list is full");
 }
 
 void Span::addNumber( std::list<int>::iterator start, std::list<int>::iterator end ) {
-    for (std::list<int>::iterator tmp = start; tmp != end; tmp++) {
-        std::cout << (tmp == end ? "END" : "NOT END") << std::endl;
-        if (_lst.size() < _size) {
-            _lst.push_back(*tmp);
-            std::cout << *tmp << " added to the list" << std::endl;
-        }
-        else {
-            
-            throw ListOverflowException();
-        }
-    }
+    if (_lst.size() > _size)
+        throw std::out_of_range("Span::addNumber: list is full");
+    this->_lst.insert( this->_lst.end(), start, end );
 }
 
 int Span::shortestSpan( void ) {
