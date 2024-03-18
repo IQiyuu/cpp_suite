@@ -35,6 +35,7 @@ std::map<std::string, double> BitcoinExchange::loadFile( const char *filename ) 
         return ret;
     while(std::getline(in, line)) {
         std::cout << line << std::endl;
+
         date = line.substr(0, line.find('|'));
         ss << line.substr(line.find('|'), line.size());
         ss >> value;
