@@ -10,21 +10,14 @@ class BitcoinExchange {
     private:
         std::map<std::string, double> _data;
         BitcoinExchange( void );
-        std::map<std::string, double> loadFile( const char * );
+        bool validDate( std::string date );
 
     public:
         BitcoinExchange( const char * );
         BitcoinExchange( const BitcoinExchange & );
         ~BitcoinExchange( void );
         BitcoinExchange &operator=( const BitcoinExchange & );
-        void writeData( void );
-
-    class UnknowFileException: public std::exception {
-        public:
-            virtual const char* what() const throw() {
-                return "This file does not exist.";
-            }
-    };
+        void exchange( const std::string &filename );
 };
 
 #endif
