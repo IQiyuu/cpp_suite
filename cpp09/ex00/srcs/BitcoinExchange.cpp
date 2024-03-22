@@ -7,14 +7,14 @@ BitcoinExchange::BitcoinExchange( const char *filename ) {
     std::string file(filename);
 
     if (!in.is_open()) {
-        std::cout << "Error in file opening : `" << file << "`" << std::endl;
+        std::cout << "Error: Unable to open the file `" << file << "`" << std::endl;
         return ;
     }
     std::getline(in, line);
     while (std::getline(in, line)) {
         std::string::size_type delPos = line.find(',');
         if (delPos == std::string::npos) {
-            std::cout << "The line: `" << line << "` don't have the good format in db" << std::endl;
+            std::cout << "Error: The line: `" << line << "` don't have the good format in db" << std::endl;
             return ;
         }
 
@@ -25,7 +25,7 @@ BitcoinExchange::BitcoinExchange( const char *filename ) {
 
         std::stringstream ss(valueStr);
         if (!(ss >> value)) {
-            std::cerr << "Invalid value format: `" << valueStr << "` in db" << std::endl;
+            std::cerr << "Error: Invalid value format: `" << valueStr << "` in db" << std::endl;
 			continue;
         }
         this->_data[date] = value;
@@ -82,7 +82,7 @@ void BitcoinExchange::exchange( const std::string &filename ) {
     std::string line;
 
     if (!in.is_open()) {
-        std::cout << "Error in file opening : `" << file << "`" << std::endl;
+        std::cout << "Error: Unable to open the file `" << file << "`" << std::endl;
         return ;
     }
     std::getline(in, line);
@@ -120,6 +120,6 @@ void BitcoinExchange::exchange( const std::string &filename ) {
         if (it != this->_data.end() || !this->_data.empty())
             std::cout << date << " => " << value << " = " << value * it->second << std::endl;
         else
-            std::cout << "No value for the date: `" << date << "`" << std::endl;
+            std::cout << "Error: No value for the date: `" << date << "`" << std::endl;
     }
 }
