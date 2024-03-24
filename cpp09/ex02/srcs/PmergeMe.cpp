@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include "PmergeMe.tpp"
 
 PmergeMe::PmergeMe( int n, char **args ) {
     char **tmp = NULL;
@@ -34,8 +35,9 @@ PmergeMe::~PmergeMe( void ) {
     std::cout << "PmergeMe \033[31mdeleted\033[0m" << std::endl;
 }
 
-void    PmergeMe::sortVector( void ) {
-}
-
-void    PmergeMe::sortList( void ) {
+void PmergeMe::sortAll( void ) {
+    std::list<int>      sortedLst = sort( this->_lst );
+    std::vector<int>    sortedVect = sort( this->_vect );
+    displayContainer(sortedLst);
+    displayContainer(sortedVect);
 }
