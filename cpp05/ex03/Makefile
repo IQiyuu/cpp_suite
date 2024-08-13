@@ -3,7 +3,7 @@ NAME = bureaucrat
 F = main\
 	Bureaucrat\
 	AForm\
-	ShruberryCreationForm\
+	ShrubberyCreationForm\
 	RobotomyRequestForm\
 	PresidentialPardonForm\
 	Intern

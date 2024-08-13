@@ -1,4 +1,6 @@
-#include "Intern.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main() {
     std::cout << "\nTEST WITH GRADE 1000" << std::endl;
@@ -56,7 +58,27 @@ int main() {
 
     std::cout << "TEST SHRU FORM" << std::endl;
     try {
-        AForm *f = new ShruberryCreationForm("home");
+        AForm *f = new ShrubberyCreationForm("home");
+        bi.signForm(*f);
+        f->execute(bi);
+        delete f;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << "TEST SHRU FORM" << std::endl;
+    try {
+        AForm *f = new PresidentialPardonForm("Roberto");
+        bi.signForm(*f);
+        f->execute(bi);
+        delete f;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << "TEST ROBO FORM" << std::endl;
+    try {
+        AForm *f = new RobotomyRequestForm("Roberto");
         bi.signForm(*f);
         f->execute(bi);
         delete f;

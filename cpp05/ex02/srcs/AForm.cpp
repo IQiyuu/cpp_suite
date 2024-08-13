@@ -47,6 +47,18 @@ void    AForm::beSigned( Bureaucrat &ref ) {
     this->_signed = true;
 }
 
+const char* AForm::GradeTooHighException::what() const throw() {
+    return "Grade too high.";
+}
+
+const char* AForm::GradeTooLowException::what() const throw() {
+    return "Grade too low.";
+}
+
+const char* AForm::NotSignedException::what() const throw() {
+    return "Form not signed.";
+}
+
 std::ostream    &operator<<( std::ostream &os, AForm const &ref ) {
     os << "AForm " << ref.getName() << ":\n\t- minimum grade to sign    : " << ref.getSignGrade() << "\n\t- minimum grade to execute : " << ref.getExecGrade() << "\n\t- the Aform is signed       : " << ref.isSigned();
     return os;

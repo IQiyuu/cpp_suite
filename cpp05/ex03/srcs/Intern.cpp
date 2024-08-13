@@ -18,18 +18,28 @@ Intern &Intern::operator=( Intern const &ref ) {
     return *this;
 }
 
-AForm    *Intern::makeForm( std::string formName, std::string formTarget) const {
-    AForm*    forms[] = {   new ShruberryCreationForm( formTarget ), 
-                            new RobotomyRequestForm( formTarget ), 
-                            new PresidentialPardonForm( formTarget ) };
-    std::string formsName[] = { "ShruberryCreationForm", "RobotomyRequestForm", "PresidentialPardonForm" };
+static AForm	*makePresident( const std::string target ) {
+	return (new PresidentialPardonForm(target));
+}
 
+static AForm	*makeRobot( const std::string target ) {
+	return (new RobotomyRequestForm(target));
+}
+
+static AForm	*makeShrubbery( const std::string target ) {
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm	*Intern::makeForm( std::string form, std::string target ) const {
+    std::string names[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+    AForm *(*forms[])(const std::string target) = {&makeShrubbery, &makeRobot, &makePresident};	
     for (int i = 0; i < 3; i++) {
-        if (formsName[i] == formName) {
-            std::cout << "Intern creates form " << formName << std::endl;
-            return (forms[i]);
+        if (names[i] == form) {
+            std::cout << names[i] << std::endl;
+            std::cout << "Intern created form `" << form << "'." << std::endl;
+            return (*(forms[i]))(target);
         }
     }
-    std::cout << "form : " << formName << " does not exist" << std::endl;
-    return (NULL);
+    std::cout << "ERROR: form `" <<  form << "' not found" << std::endl;
+    return NULL;
 }

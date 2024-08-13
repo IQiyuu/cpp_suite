@@ -1,33 +1,33 @@
-#include "ShruberryCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-ShruberryCreationForm::ShruberryCreationForm( void ): AForm("ShruberryCreationForm", 145, 137), _target("") {
+ShrubberyCreationForm::ShrubberyCreationForm( void ): AForm("ShrubberyCreationForm", 145, 137), _target("") {
     std::cout << "Shrumachin \033[32mcreated\033[0m" << std::endl;
 }
 
-ShruberryCreationForm::ShruberryCreationForm( std::string target ): AForm("ShruberryCreationForm", 145, 137), _target(target) {
+ShrubberyCreationForm::ShrubberyCreationForm( std::string target ): AForm("ShrubberyCreationForm", 145, 137), _target(target) {
     std::cout << "Shrumachin \033[32mcreated\033[0m" << std::endl;
 }
 
-ShruberryCreationForm::ShruberryCreationForm( ShruberryCreationForm const &ref ): AForm(ref), _target("") {
+ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &ref ): AForm(ref), _target("") {
     std::cout << "Shrumachin copy \033[32mcreated\033[0m" << std::endl;
 }
 
-ShruberryCreationForm::~ShruberryCreationForm( void ) {
+ShrubberyCreationForm::~ShrubberyCreationForm( void ) {
     std::cout << "Shrumachin \033[31mdeleted\033[0m" << std::endl;
 }
 
-ShruberryCreationForm &ShruberryCreationForm::operator=( ShruberryCreationForm const &ref ) {
+ShrubberyCreationForm &ShrubberyCreationForm::operator=( ShrubberyCreationForm const &ref ) {
     (void)ref;
     return *this;
 }
 
-void    ShruberryCreationForm::execute( const Bureaucrat& exec ) const {
+void    ShrubberyCreationForm::execute( const Bureaucrat& exec ) const {
      if ( this->isSigned() == false )
         throw AForm::NotSignedException();
     else if ( exec.getGrade() > this->getExecGrade() ) {
         throw AForm::GradeTooLowException();
     }
-
+    std::cout << "Shrubbery created." << std::endl;
     std::ofstream f;
     std::string name = this->_target + "_shrubbery";
     f.open( name.data() );

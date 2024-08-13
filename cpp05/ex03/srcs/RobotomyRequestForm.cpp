@@ -22,15 +22,14 @@ RobotomyRequestForm &RobotomyRequestForm::operator=( RobotomyRequestForm const &
 }
 
 void    RobotomyRequestForm::execute( const Bureaucrat& exec ) const {
-    static int i = 0;
     if ( this->isSigned() == false )
         throw AForm::NotSignedException();
     else if ( exec.getGrade() > this->getExecGrade() ) {
         throw AForm::GradeTooLowException();
     }
-    if (i % 2 == 0)
-        std::cout << _target << " has been robotomized successfully" << std::endl;
+    srand(time(NULL));
+	if (rand() % 2)
+        std::cout << _target << " has been robotomized successfully." << std::endl;
     else
-        std::cout << "robotomization failed" << std::endl;
-    i++;
+        std::cout << "robotomization failed." << std::endl;
 }

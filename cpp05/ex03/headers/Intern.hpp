@@ -1,7 +1,7 @@
 #ifndef INTERN
 # define INTERN
 
-#include "ShruberryCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 

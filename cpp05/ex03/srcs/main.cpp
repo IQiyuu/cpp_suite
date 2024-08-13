@@ -56,7 +56,27 @@ int main() {
 
     std::cout << "TEST SHRU FORM" << std::endl;
     try {
-        AForm *f = new ShruberryCreationForm("home");
+        AForm *f = new ShrubberyCreationForm("home");
+        bi.signForm(*f);
+        f->execute(bi);
+        delete f;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << "TEST SHRU FORM" << std::endl;
+    try {
+        AForm *f = new PresidentialPardonForm("Roberto");
+        bi.signForm(*f);
+        f->execute(bi);
+        delete f;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << "TEST ROBO FORM" << std::endl;
+    try {
+        AForm *f = new RobotomyRequestForm("Roberto");
         bi.signForm(*f);
         f->execute(bi);
         delete f;
@@ -68,7 +88,16 @@ int main() {
     Intern i;
     i.makeForm("GUHEUIFHASUFHKF", "Robert");
     AForm *test = i.makeForm("PresidentialPardonForm", "Robert");
+    AForm *test2 = i.makeForm("ShrubberyCreationForm", "Robert");
+    AForm *test3 = i.makeForm("RobotomyRequestForm", "Robert");
     bi.signForm(*test);
+    bi.signForm(*test2);
+    bi.signForm(*test3);
+    test->execute(bi);
+    test2->execute(bi);
+    test3->execute(bi);
     delete test;
+    delete test2;
+    delete test3;
     return 0;
 }
