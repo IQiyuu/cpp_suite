@@ -70,6 +70,10 @@ int Span::longestSpan( void ) {
     return (longest);
 }
 
+const char* Span::ListOverflowException::what() const throw() {
+    return "Too much arguments in the list.";
+}
+
 std::list<int> Span::getList( void ) const {
     return (this->_lst);
 }

@@ -26,9 +26,7 @@ class Span {
 
     class ListOverflowException: public std::exception {
         public:
-            virtual const char* what() const throw() {
-                return "Too much arguments in the list.";
-            }
+            const char* what() const throw();
     };
 
 };

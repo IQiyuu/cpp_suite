@@ -9,7 +9,11 @@ int main() {
     vec.push_back(5);
     vec.push_back(25);
     vec.push_back(42);
-    ::easyFind(vec, 5);
-    ::easyFind(vec, 45);
-    ::easyFind(vec, 25);
+    try {
+        ::easyFind(vec, 5);
+        ::easyFind(vec, 25);
+        ::easyFind(vec, 45);
+    } catch ( std::exception &e ) {
+        std::cout << e.what() << std::endl;
+    }
 }

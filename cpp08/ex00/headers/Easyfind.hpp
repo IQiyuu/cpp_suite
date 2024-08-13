@@ -16,7 +16,7 @@ void easyFind(T array, int entier) {
 
     for (it = array.begin(); it != array.end(); it++) {
         if (*it == entier) {
-            std::cout << "FOUND" << std::endl;
+            std::cout << entier << " FOUND" << std::endl;
             return ;
         }
     }
