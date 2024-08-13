@@ -28,6 +28,10 @@ class Array {
 			*this = ref;
         }
 
+		unsigned int size( void ) {
+			return _size;
+		}
+
         Array &operator=( Array const &ref ) {
 			if (this->_array != NULL)
 				delete[] this->_array;

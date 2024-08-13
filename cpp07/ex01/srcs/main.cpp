@@ -22,7 +22,7 @@ int main()
 
 	::iter(a, sizeof(a) / sizeof(char), ft_tolower);
 
-	std::cout << "Changed:" <<
+	std::cout << "lower:" <<
 	"\n\ta[0]: " << a[0] <<
 	"\n\ta[1]: " << a[1] <<
 	"\n\ta[2]: " << a[2] <<
@@ -30,7 +30,7 @@ int main()
 
 	::iter(a, 2, ft_toupper);
 
-	std::cout << "Changed:" <<
+	std::cout << "upper:" <<
 	"\n\ta[0]: " << a[0] <<
 	"\n\ta[1]: " << a[1] <<
 	"\n\ta[2]: " << a[2] <<
