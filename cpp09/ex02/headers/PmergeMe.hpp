@@ -6,7 +6,7 @@
 #include <list>
 #include <ctime>   
 #include <cstdlib> 
-#include <cstring> 
+#include <cstring>
 
 class PmergeMe {
 
@@ -23,12 +23,20 @@ class PmergeMe {
 
         void sortAll( void );
 
+        std::vector<int>    getVect( void ) const;
+        std::list<int>      getList( void ) const;
+
         template <typename T>
-        T sort( T & );
+        T       sort( T & );
         template <typename T>
-        T merge( T &, T & );
+        void    merge( T &, const typename T::value_type & );
         template <typename T>
         void    displayContainer( T & );
+
+        class InvalidInputException : public std::exception {
+            public:
+                virtual const char* what() const throw() { return "Invalid Input."; }
+            };
 };
 
 #endif

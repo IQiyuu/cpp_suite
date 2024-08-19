@@ -27,9 +27,13 @@ void Span::addNumber( int n ) {
 }
 
 void Span::addNumber( std::list<int>::iterator start, std::list<int>::iterator end ) {
-    if (_lst.size() > _size)
+    int a = 0;
+    for (std::list<int>::iterator it = start; it != end; it++)
+        a++;
+    if (_lst.size() + a > _size)
         throw std::out_of_range("Span::addNumber: list is full");
     this->_lst.insert( this->_lst.end(), start, end );
+    std::cout << "span added" << std::endl;
 }
 
 int Span::shortestSpan( void ) {

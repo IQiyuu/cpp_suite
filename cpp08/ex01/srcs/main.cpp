@@ -1,36 +1,47 @@
 #include "Span.hpp"
 #include <cstdlib>
-#include <algorithm>
 
 int main() {
-    Span test = Span(11);
-
-    for (int i = 0; i < 9; i++) {
-        test.addNumber(i);
-    }
-    test.addNumber(99999999);
     try {
+        Span test = Span(10);
+        for (int i = 0; i < 9; i++) {
+            test.addNumber(i);
+        }
+        test.addNumber(99999999);
+        std::cout << "longest span : " << test.longestSpan() << std::endl;
+        std::cout << "shortest span: " << test.shortestSpan() << std::endl;
+        // lst full
         test.addNumber(1);
     } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
+        std::cout << "Error: " << e.what() << std::endl;
     }
 
-    std::cout << test.shortestSpan() << std::endl;
-    std::cout << test.longestSpan() << std::endl;
 
     try {
-        std::list<int>    l( 10000 );
+        std::cout << std::endl;
+        std::cout << "test 2" << std::endl;
+        std::list<int>    l;
         std::srand( time ( NULL ) );
-        std::generate( l.begin(), l.end(), std::rand );
+        for (int i = 0; i < 1000; i++)
+            l.push_back(rand());
     
         Span aaa( l.size() );
+        std::list<int> tmp = aaa.getList();
+        std::cout << "Span size: " << l.size() << " empty" << std::endl;
+        for (std::list<int>::iterator it = tmp.begin(); it != tmp.end(); it++)
+            std::cout << (*it) << "*";
 
         aaa.addNumber( l.begin(), l.end() );
-
-        std::cout << aaa.longestSpan() << std::endl;
-        std::cout << aaa.shortestSpan() << std::endl;
-        
+        tmp = aaa.getList();
+        std::cout << "Span size: " << l.size() << " filled" << std::endl;
+        for (std::list<int>::iterator it = tmp.begin(); it != tmp.end(); it++)
+            std::cout << (*it) << "-";
+        std::cout << std::endl;
+        std::cout << "longest span : " << aaa.longestSpan() << std::endl;
+        std::cout << "shortest span: " << aaa.shortestSpan() << std::endl;
+        aaa.addNumber( l.begin(), l.end() );
     } catch ( std::exception& e ) {
-        std::cout << e.what() << std::endl; 
+        std::cout << "Error: " << e.what() << std::endl; 
     }
 }
+

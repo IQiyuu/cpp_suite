@@ -20,10 +20,12 @@ class Array {
         Array( unsigned int size ): _size(size) {
             std::cout << "Array \033[32mcreated\033[0m" << std::endl;
             this->_array = new T[_size];
+			for (unsigned int i = 0; i < _size; i++ )
+				_array[i] = 0;
         }
 
         Array( Array const &ref ): _size(ref._size) {
-        	std::cout << "Copy Constuctor called" << std::endl;
+        	std::cout << "Copy Constuctor \033[32mcreated\033[0m" << std::endl;
 			this->_array = NULL;
 			*this = ref;
         }
@@ -33,6 +35,7 @@ class Array {
 		}
 
         Array &operator=( Array const &ref ) {
+			std::cout << "Assignation called" << std::endl;
 			if (this->_array != NULL)
 				delete[] this->_array;
 			if (ref._size != 0)

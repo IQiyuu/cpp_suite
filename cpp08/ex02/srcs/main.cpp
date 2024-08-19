@@ -4,6 +4,8 @@
 int main()
 {
     {
+        std::cout << std::endl;
+        std::cout << "std::list" << std::endl;
         std::list<int> mstack;
         mstack.push_back(5);
         mstack.push_back(17);
@@ -13,20 +15,23 @@ int main()
         mstack.push_back(3);
         mstack.push_back(5);
         mstack.push_back(737);
-        //[...]
         mstack.push_back(0);
         std::list<int>::iterator it = mstack.begin();
         std::list<int>::iterator ite = mstack.end();
+        std::cout << *it << std::endl;
         ++it;
+        std::cout << "apres incrementation (it++) " << *it << std::endl;
         --it;
+        std::cout << "apres decrementation (it--) " << *it << std::endl;
         while (it != ite)
         {
-            std::cout << *it << std::endl;
+            std::cout << *it << "-";
             ++it;
         }
-        //std::stack<int> s(mstack);
+        std::cout << std::endl;
     }
     {
+        std::cout << std::endl;
         MutantStack<int> mstack;
         mstack.push(5);
         mstack.push(17);
@@ -36,17 +41,20 @@ int main()
         mstack.push(3);
         mstack.push(5);
         mstack.push(737);
-        //[...]
         mstack.push(0);
         MutantStack<int>::iterator it = mstack.begin();
         MutantStack<int>::iterator ite = mstack.end();
+        std::cout << *it << std::endl;
         ++it;
+        std::cout << "apres incrementation (it++) " << *it << std::endl;
         --it;
+        std::cout << "apres decrementation (it--) " << *it << std::endl;
         while (it != ite)
         {
-            std::cout << *it << std::endl;
+            std::cout << *it << "-";
             ++it;
         }
-        return 0;
+        std::cout << std::endl;
     }
+    return 0;
 }

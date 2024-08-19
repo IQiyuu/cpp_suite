@@ -49,6 +49,13 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "ctime": "cpp"
+        "ctime": "cpp",
+        "cstring": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "cinttypes": "cpp",
+        "iomanip": "cpp",
+        "pmergeme.hpp": "c",
+        "*.tpp": "c"
     }
 }

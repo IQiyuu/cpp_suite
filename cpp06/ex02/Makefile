@@ -1,13 +1,15 @@
-NAME = scalar
+NAME = jsp
 
 FILES =	main\
-		InputException\
-		ScalarConverter\
+		Base\
+		A\
+		B\
+		C
 
 SRC = $(foreach f, $(FILES), srcs/$(f).cpp)
 OBJ = $(SRC:.cpp=.o)
 
-CFLAGS = -Wall -Werror -Wextra -std=c++11 -fsanitize=address -g -Iheaders
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address -g -Iheaders
 
 all: $(NAME)
 r: re

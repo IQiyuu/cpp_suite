@@ -1,10 +1,11 @@
+#ifndef RPN_HPP
+#define RPN_HPP
 #pragma once
 
 #include <iostream>
 #include <stack>
 
-class RPN
-{
+class RPN {
     private:
         std::stack<double> num;
     public:
@@ -15,3 +16,5 @@ class RPN
         void calcul( std::string );
 		
 };
+
+#endif

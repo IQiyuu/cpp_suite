@@ -6,33 +6,45 @@ void PmergeMe::displayContainer( T &seq ) {
     size_t cpt = 0;
 
     for (it = seq.begin(); it != seq.end(); it++) {
-        if (seq.size() > 6 && (cpt < 3 || cpt > seq.size() - 4))
+        if ((seq.size() > 6 && (cpt < 3 || cpt > seq.size() - 4)) || seq.size() <= 6)
             std::cout << *it << " ";
-        if (seq.size() > 6 && cpt == 3)
+        else if (seq.size() > 6 && cpt == 3)
             std::cout << "[...] ";
                 cpt++;
     }
+    std::cout << std::endl;
 }
 
 template <typename T>
-T PmergeMe::merge( T &v1, T &v2 ) {
-    (void)v2;
-    return v1;
+void PmergeMe::merge( T &res, const typename T::value_type &element ) {
+    typename T::iterator it = std::lower_bound(res.begin(), res.end(), element);
+    res.insert(it, element);
 }
 
 template <typename T>
-T PmergeMe::sort( T &vect ) {
-    if (vect.size() <= 1)
-        return vect;
+T   PmergeMe::sort( T &data ) {
+    if (data.size() <= 1)
+        return data;
 
-    typename T::iterator mid = vect.begin();
-    std::advance(mid, vect.size() / 2);
-    T lHalf(vect.begin(), mid);
-    T rHalf(mid, vect.end());
+    T   res;
 
+    typename T::iterator it = data.begin();
+    typename T::iterator it_next = it;
+    std::advance(it_next, 1);
 
-    lHalf = sort(lHalf);
-    rHalf = sort(rHalf);
+    if (*it < *it_next) {
+        res.push_back(*it);
+        res.push_back(*it_next);
+    } else {
+        res.push_back(*it_next);
+        res.push_back(*it);
+    }
 
-    return merge(lHalf, rHalf);
+    it = it_next;
+    std::advance(it, 1);
+
+    for (; it != data.end(); ++it)
+        merge(res, *it);
+
+    return res;
 }
